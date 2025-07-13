@@ -283,11 +283,9 @@ UserInputService.InputBegan:Connect(function(input, gameProcessed)
 end)
 
 RunService.Stepped:Connect(function()
-	if noclip and character then
-		local root = character:FindFirstChild("HumanoidRootPart")
-		if root then root.CanCollide = false end
+	if noclip and character and character:FindFirstChild("HumanoidRootPart") then
 		for _, part in ipairs(character:GetDescendants()) do
-			if part:IsA("BasePart") and part.CanCollide then
+			if part:IsA("BasePart") then
 				part.CanCollide = false
 			end
 		end
